@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get 'posts/new'
+  get 'recipes/list'
+  get 'recipes/show'
+  get 'recipes/new'
 
-  get 'posts/delete'
+  post 'recipes' => 'recipes#create'
 
   # devise_for :users
   # devise_for :users, :controllers => { registrations: 'registrations' }
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     # passwords: 'users/passwords'
   }
+
   get 'homes/index'
   get 'homes/about'
 
