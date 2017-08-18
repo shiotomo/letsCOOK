@@ -10,7 +10,9 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new
+    now = Time.current
     @recipe.title = params[:recipe][:title]
+    @recipe.postdate = now
     @recipe.save
     redirect_to '/recipes/list'
   end
