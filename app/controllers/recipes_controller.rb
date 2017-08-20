@@ -1,6 +1,12 @@
 class RecipesController < ApplicationController
   layout 'home.html.erb'
 
+  def home
+  end
+
+  def recipe 
+  end
+
   def list
     @recipes = Recipe.all
   end

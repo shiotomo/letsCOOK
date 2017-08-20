@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'recipes/list'
   get 'recipes/show'
   get 'recipes/new'
+  get 'recipes/home'
+  get 'recipes/recipe'
 
   post 'recipes' => 'recipes#create'
 
@@ -12,10 +14,10 @@ Rails.application.routes.draw do
     # passwords: 'users/passwords'
   }
 
-  get 'homes/index'
-  get 'homes/about'
+  get 'welcomes/index'
+  get 'welcomes/about'
 
-  root to: 'homes#index'
+  root to: 'welcomes#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

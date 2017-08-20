@@ -12,7 +12,11 @@
  *
  *= require_tree .
  *= require_self
+
+ @import "materialize/components/color";
+ $primary-color: color("blue", "lighten-2") !default;
+ @import 'materialize';
  */
 
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
+@import "bootstrap-sprockets";
+@import "bootstrap";
