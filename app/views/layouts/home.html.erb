@@ -21,11 +21,12 @@
 
       <div id="gnavi" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="/">HOME</a></li>
-          <li><a href="/welcomes/about">ABOUT</a></li>
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/welcomes/about">お知らせ</a></li>
           <li><a href="/recipes/home">投稿</a></li>
           <li><a href="/recipes/list">一覧</a></li>
         </ul>
+
         <div class="dropdown nav navbar-right">
           <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
             <%= current_user.name %>
@@ -35,7 +36,7 @@
             <li><a href="/">Your prfile</a></li>
             <li><a href="/helps/index">Help</a></li>
             <li role="presentation" class="divider"></li>
-            <li><a href="/settings/setting">Your prfile</a></li>
+            <li><a href="/settings/setting">Setting</a></li>
             <li><%= link_to 'SIGN_OUT', destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>   
