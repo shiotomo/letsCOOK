@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'helps/index'
+
+  get 'settings/profile'
+
+  get 'settings/setting'
+
   get 'recipes/list'
   get 'recipes/show'
   get 'recipes/new'

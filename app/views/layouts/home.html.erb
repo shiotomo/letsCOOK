@@ -25,8 +25,20 @@
           <li><a href="/welcomes/about">ABOUT</a></li>
           <li><a href="/recipes/home">投稿</a></li>
           <li><a href="/recipes/list">一覧</a></li>
-          <li><%= link_to 'SIGN_OUT', destroy_user_session_path, method: :delete %></li>
         </ul>
+        <div class="dropdown nav navbar-right">
+          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+            <%= current_user.name %>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/">Your prfile</a></li>
+            <li><a href="/helps/index">Help</a></li>
+            <li role="presentation" class="divider"></li>
+            <li><a href="/settings/setting">Your prfile</a></li>
+            <li><%= link_to 'SIGN_OUT', destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>   
       </div>
     </nav>
     <%= yield %>
