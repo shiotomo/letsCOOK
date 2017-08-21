@@ -1,0 +1,2 @@
+class Recipeidea < ApplicationRecord
+end

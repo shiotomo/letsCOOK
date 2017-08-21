@@ -1,12 +1,9 @@
-<h1>レシピ一覧</h1>
+<h1>アイデア一覧</h1>
 
 <hr>
 <% @recipes.each do |recipe| %>
   <h3>
     <%= recipe.title %>
   </h3>
-  <h5>
-    <%= recipe.postdate%>
-  </h5>
   <hr>
 <% end %>

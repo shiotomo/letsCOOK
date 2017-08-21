@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get 'recipeideas/new'
+  get 'recipeideas/list'
+  post 'recipeideas' => 'recipeideas#create'
+
   get 'helps/index'
 
   get 'settings/profile'
-
   get 'settings/setting'
 
   get 'recipes/list'
