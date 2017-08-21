@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'recipes/new'
   get 'recipes/home'
   get 'recipes/recipe'
+  get 'recipes/post'
 
   post 'recipes' => 'recipes#create'
 

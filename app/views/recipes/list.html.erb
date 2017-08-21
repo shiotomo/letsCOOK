@@ -3,7 +3,7 @@
 <hr>
 <% @recipes.each do |recipe| %>
   <h3>
-    <%= recipe.title %>
+    <a href="/recipes/recipe"><%= recipe.title %></a>
   </h3>
   <h5>
     <%= recipe.postdate%>

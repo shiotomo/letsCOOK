@@ -7,6 +7,9 @@ class RecipesController < ApplicationController
   def recipe 
   end
 
+  def post
+  end
+
   def list
     @recipes = Recipe.all
   end
