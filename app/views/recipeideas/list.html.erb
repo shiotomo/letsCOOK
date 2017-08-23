@@ -1,9 +1,8 @@
 <h1>アイデア一覧</h1>
-
 <hr>
 <% @recipes.each do |recipe| %>
   <h3>
-    <%= recipe.title %>
+    <a href="/recipeideas/idea"><%= recipe.title %></a>
   </h3>
   <hr>
 <% end %>

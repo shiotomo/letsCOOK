@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'recipeideas/new'
   get 'recipeideas/list'
+  get 'recipeideas/idea'
   post 'recipeideas' => 'recipeideas#create'
 
   get 'helps/index'
