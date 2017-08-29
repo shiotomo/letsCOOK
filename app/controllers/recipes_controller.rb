@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
   end
 
   def list
-    @recipes = Recipe.all
+    @recipes = Recipe.where(user_id: current_user.id)
   end
 
   def show
@@ -22,6 +22,7 @@ class RecipesController < ApplicationController
     now = Time.current
     @recipe.title = params[:recipe][:title]
     @recipe.postdate = now
+    @recipe.user_id = current_user.id
     @recipe.save
     redirect_to '/recipes/list'
   end
