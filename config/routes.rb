@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'recipes/home'
   get 'recipes/recipe'
   get 'recipes/post'
+  get 'recipes/edit'
 
   post 'recipes' => 'recipes#create'
 

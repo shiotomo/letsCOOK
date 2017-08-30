@@ -17,6 +17,10 @@ class RecipesController < ApplicationController
   def show
   end
 
+  def edit
+    @recipe = Recipe.all
+  end
+
   def create
     @recipe = Recipe.new
     now = Time.current
