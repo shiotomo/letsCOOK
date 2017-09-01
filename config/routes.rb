@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
+  resources :welcomes
+  resources :abouts
+  resources :helps
+  resources :settings
+
   get 'recipeideas/new'
   get 'recipeideas/list'
   get 'recipeideas/idea'
   post 'recipeideas' => 'recipeideas#create'
-
-  get 'helps/index'
-
-  get 'settings/profile'
-  get 'settings/setting'
 
   get 'recipes/list'
   get 'recipes/show'
@@ -26,8 +26,6 @@ Rails.application.routes.draw do
     # passwords: 'users/passwords'
   }
 
-  get 'welcomes/index'
-  get 'welcomes/about'
 
   root to: 'welcomes#index'
 

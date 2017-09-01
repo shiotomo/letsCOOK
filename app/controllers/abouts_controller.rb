@@ -1,4 +1,4 @@
-class HelpsController < ApplicationController
+class AboutsController < ApplicationController
   layout 'home.html.erb'
 
   def index

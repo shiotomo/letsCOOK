@@ -5,7 +5,7 @@ class RecipeideasController < ApplicationController
   end
 
   def list
-    @recipes = Recipeidea.all
+    @recipes = Recipeidea.where(user_id: current_user.id)
   end
 
   def create
