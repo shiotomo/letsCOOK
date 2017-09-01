@@ -1,23 +1,22 @@
 Rails.application.routes.draw do
-  resources :welcomes
-  resources :abouts
-  resources :helps
-  resources :settings
+  get 'recipes/recipe'
+  get 'recipes/post'
 
   get 'recipeideas/new'
   get 'recipeideas/list'
   get 'recipeideas/idea'
   post 'recipeideas' => 'recipeideas#create'
 
-  get 'recipes/list'
-  get 'recipes/show'
-  get 'recipes/new'
-  get 'recipes/home'
-  get 'recipes/recipe'
-  get 'recipes/post'
-  get 'recipes/edit'
 
   post 'recipes' => 'recipes#create'
+
+  resources :notifications
+  resources :recipes
+  resources :welcomes
+  resources :abouts
+  resources :helps
+  resources :settings
+
 
   # devise_for :users
   # devise_for :users, :controllers => { registrations: 'registrations' }

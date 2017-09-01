@@ -1,2 +1,12 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<h1>レシピ一覧</h1>
+
+<hr>
+<% @recipes.each do |recipe| %>
+  <h3>
+    <a href="/recipes/recipe"><%= recipe.title %></a>
+  </h3>
+  <h5>
+    <%= recipe.postdate%><br>
+  </h5>
+  <hr>
+<% end %>
