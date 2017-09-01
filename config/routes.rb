@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'recipeideas/new'
   get 'recipeideas/list'
   get 'recipeideas/idea'
-  post 'recipeideas' => 'recipeideas#create'
+  # post 'recipeideas' => 'recipeideas#create'
 
 
   post 'recipes' => 'recipes#create'
