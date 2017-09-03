@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipes = Recipe.where(user_id: current_user.id)
+    @recipes = Recipe.where(user_id: current_user.id).reverse
   end
 
   def update

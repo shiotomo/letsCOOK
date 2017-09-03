@@ -9,6 +9,7 @@ class RecipeideasController < ApplicationController
     @recipe = Recipeidea.new
     @recipe.title = params[:recipeidea][:title]
     @recipe.idea = "レシピアイデア"
+    @recipe.user_id = current_user.id
     @recipe.content = params[:recipeidea][:content]
     @recipe.save
     redirect_to '/recipeideas/list'
@@ -21,7 +22,7 @@ class RecipeideasController < ApplicationController
   end
 
   def show
-    @recipes = Recipeidea.all
+    @recipes = Recipeidea.where(user_id: current_user.id).reverse
   end
 
   def update
