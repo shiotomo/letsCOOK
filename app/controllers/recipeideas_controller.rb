@@ -1,11 +1,8 @@
 class RecipeideasController < ApplicationController
   layout 'home.html.erb'
 
-  def new
-  end
 
-  def list
-    @recipes = Recipeidea.where(user_id: current_user.id)
+  def index
   end
 
   def create
@@ -15,6 +12,22 @@ class RecipeideasController < ApplicationController
     @recipe.content = params[:recipeidea][:content]
     @recipe.save
     redirect_to '/recipeideas/list'
+  end
+
+  def new
+  end
+
+  def edit
+  end
+
+  def show
+    @recipes = Recipeidea.all
+  end
+
+  def update
+  end
+
+  def destroy
   end
 
   def idea

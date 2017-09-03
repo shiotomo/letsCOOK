@@ -2,16 +2,16 @@ Rails.application.routes.draw do
   get 'recipes/recipe'
   get 'recipes/post'
 
-  get 'recipeideas/new'
-  get 'recipeideas/list'
   get 'recipeideas/idea'
+  # get 'recipeideas/new'
+  # get 'recipeideas/list'
+
   # post 'recipeideas' => 'recipeideas#create'
-
-
-  post 'recipes' => 'recipes#create'
+  # post 'recipes' => 'recipes#create'
 
   resources :notifications
   resources :recipes
+  resources :recipeideas
   resources :welcomes
   resources :abouts
   resources :helps
