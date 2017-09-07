@@ -32,5 +32,6 @@ class RecipeideasController < ApplicationController
   end
 
   def idea
+    @recipe = Recipeidea.find(params[:data])
   end
 end
