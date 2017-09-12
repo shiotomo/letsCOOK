@@ -11,10 +11,11 @@ class RecipesController < ApplicationController
     @recipe.postdate = now
     @recipe.user_id = current_user.id
     @recipe.save
-    redirect_to '/recipes/list'
+    redirect_to '/recipes/show'
   end
 
   def new
+    @recipe = Recipe.new
   end
 
   def edit
@@ -34,4 +35,16 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:data])
   end
 
+  private
+  def set_recipe
+    @recipe = Recipe.include(:materials).find(params[:id])
+    @recipe1 = Recipe.include(:materials).find(params[:id])
+    @recipe2 = Recipe.include(:progresses).find(params[:id])
+  end
+
+  private
+  def recipe_params
+    params.require(:recipe).permit(:name, :description, materials_attributes: [:id, :name, :amount, :ingredients_number, :_destroy])
+    params.require(:recipe).permit(:name, :description, progresses_attributes: [:id, :content, :order_number, :_destroy])
+  end
 end
