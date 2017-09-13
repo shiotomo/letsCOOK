@@ -5,32 +5,18 @@
 <h2>材料</h2>
 <h3>
   <ul>
-    <li>例：小麦粉 30g</li>
-    <li>[ここにリストで記述]</li>
-    <li>[ここにリストで記述]</li>
-    <li>[ここにリストで記述]</li>
+    <% @recipe.materials.each do |material| %>
+      <li><%= material.name %>:<%= material.amount %></li>
+    <% end %>
   </ul>
 </h3>
 <hr>
 <h2>行程</h2>
 <h3>
   <ul>
-    <li>1.</li>
-    <p>
-      小麦粉と水を混ぜます。
-    </p>
-    <li>[ここにリストで番号を記述]</li>
-    <p>
-      [ここに内容を記述]
-    </p>
-    <li>[ここにリストで番号を記述]</li>
-    <p>
-      [ここに内容を記述]
-    </p>
-    <li>[ここにリストで番号を記述]</li>
-    <p>
-      [ここに内容を記述]
-    </p>
+    <% @recipe.progresses.each do |progress| %>
+      <li><%= progress.content %></li>
+    <% end %>
   </ul>
 </h3>
 <hr>
