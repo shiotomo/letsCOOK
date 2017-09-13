@@ -7,19 +7,17 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    now = Time.current
     @recipe.title = params[:recipe][:title]
-    @recipe.postdate = now
     @recipe.user_id = current_user.id
     @recipe.memo = params[:recipe][:memo]
 
     respond_to do |format|
       if @recipe.save
-        format.html {redirect_to @recipe, notice: 'Recipe was succesfully created.'}
-        format.json {rendor :show, status: :created, location: @recipe}
+        format.html { redirect_to @recipe, notice: 'Recipe was succesfully created.' }
+        format.json { rendor :show, status: :created, location: @recipe }
       else
-        format.html{render :new}
-        format.json{render json: @recipe.erros, status: :unprocessable_entity}
+        format.html { render :new }
+        format.json { render json: @recipe.erros, status: :unprocessable_entity }
       end
     end
 
@@ -28,7 +26,6 @@ class RecipesController < ApplicationController
     # @recipe.postdate = now
     # @recipe.user_id = current_user.id
     # @recipe.save
-    redirect_to '/recipes'
   end
 
   def new
@@ -63,7 +60,6 @@ class RecipesController < ApplicationController
     @recipe2 = Recipe.include(:progresses).find(params[:id])
   end
 
-  private
   def recipe_params
     params.require(:recipe).permit(:name, :description, materials_attributes: [:id, :name, :amount, :ingredients_number, :_destroy], progresses_attributes: [:id, :content, :order_number, :_destroy])
   end

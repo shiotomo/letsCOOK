@@ -3,12 +3,12 @@ class RecipeideasController < ApplicationController
 
 
   def index
+    @recipes = Recipeidea.where(user_id: current_user.id).reverse
   end
 
   def create
     @recipe = Recipeidea.new
     @recipe.title = params[:recipeidea][:title]
-    @recipe.idea = "レシピアイデア"
     @recipe.user_id = current_user.id
     @recipe.content = params[:recipeidea][:content]
     @recipe.save
@@ -22,7 +22,7 @@ class RecipeideasController < ApplicationController
   end
 
   def show
-    @recipes = Recipeidea.where(user_id: current_user.id).reverse
+    @recipe = Recipeidea.find(params[:id])
   end
 
   def update
@@ -32,6 +32,6 @@ class RecipeideasController < ApplicationController
   end
 
   def idea
-    @recipe = Recipeidea.find(params[:data])
+    # @recipe = Recipeidea.find(params[:data])
   end
 end

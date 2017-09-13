@@ -1,11 +1,9 @@
-<h1>アイデア一覧</h1>
+<h1>レシピのアイデア</h1>
 <hr>
-<% @recipes.each do |recipe| %>
-  <h3>
-    <%= link_to "#{recipe.title}", :controller => "recipeideas", :action => "idea", :data => "#{recipe.id}"%>
-  </h3>
-  <h5>
-    <%= recipe.created_at %>
-  </h5>
-  <hr>
-<% end %>
+<h2>タイトル : <%= @recipe.title %></h2>
+<hr>
+<h2>アイデアメモ</h2>
+<h3>
+  <%= @recipe.content %> 
+</h3>
+<hr>

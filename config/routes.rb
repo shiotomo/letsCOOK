@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   # get 'recipes/recipe'
-  get 'recipes/post'
   get 'recipes/menu'
 
-  get 'recipeideas/idea'
   # get 'recipeideas/new'
   # get 'recipeideas/list'
 

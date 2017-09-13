@@ -1,11 +1,11 @@
 <%= form_for @recipe do |f| %>
   <div class="field">
-    <%= f.label :title, "料理名" %><br>
+    <h3><%= f.label :title, "料理名" %></h3>
     <%= f.text_field :title %><br><br>
   </div>
   <hr>
 
-  <label>材料</label>
+  <h3><label>材料</label></h3>
   <div id="materials" class="field">
     <%= f.fields_for :materials do |material| %>
       <%= render 'material_fields', f: material %>
@@ -16,7 +16,7 @@
   </div>
   <hr>
 
-  <label>行程</label>
+  <h3><label>行程</label></h3>
   <div id="progresses" class="field">
     <%= f.fields_for :progresses do |material| %>
       <%= render 'progress_fields', f: progress %>

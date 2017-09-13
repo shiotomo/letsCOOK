@@ -22,10 +22,10 @@
 
       <div id="gnavi" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="/">ホーム</a></li>
-          <li><a href="/recipes/menu">投稿</a></li>
-          <li><a href="/recipes">一覧</a></li>
-          <li><a href="/recipeideas/show">アイデア</a></li>
+          <li><%= link_to 'ホーム', '/' %></li>
+          <li><%= link_to '投稿', '/recipes/menu' %></li>
+          <li><%= link_to '一覧', '/recipes' %></li>
+          <li><%= link_to 'アイデア', '/recipeideas' %></li>
         </ul>
 
         <div class="dropdown nav navbar-right">
@@ -34,13 +34,13 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="/notifications">Notice</a></li>
+            <li><%= link_to 'お知らせ', '/notifications' %></li>
             <li role="presentation" class="divider"></li>
-            <li><a href="/">Your prfile</a></li>
-            <li><a href="/helps">Help</a></li>
-            <li><a href="/users/edit">Setting</a></li>
+            <li><%= link_to 'プロフィール', '/' %></li>
+            <li><%= link_to 'ヘルプ', '/helps' %></li>
+            <li><%= link_to '設定', 'settings/index' %></li>
             <li role="presentation" class="divider"></li>
-            <li><%= link_to 'SIGN_OUT', destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>   
       </div>
