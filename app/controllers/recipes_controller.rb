@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
   layout 'home.html.erb'
 
   def index
+    @recipes = Recipe.where(user_id: current_user.id).reverse
   end
 
   def create
@@ -27,7 +28,7 @@ class RecipesController < ApplicationController
     # @recipe.postdate = now
     # @recipe.user_id = current_user.id
     # @recipe.save
-    # redirect_to '/recipes/show'
+    redirect_to '/recipes'
   end
 
   def new
@@ -38,7 +39,8 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipes = Recipe.where(user_id: current_user.id).reverse
+    # @recipes = Recipe.where(user_id: current_user.id).reverse
+    @recipe = Recipe.find(params[:id])
   end
 
   def update
@@ -49,6 +51,9 @@ class RecipesController < ApplicationController
 
   def recipe
     @recipe = Recipe.find(params[:data])
+  end
+
+  def menu
   end
 
   private

@@ -1,12 +1,30 @@
-<h1>レシピ一覧</h1>
-
+<h1>Myレシピ</h1>
 <hr>
-<% @recipes.each do |recipe| %>
-  <h3>
-    <%= link_to "#{recipe.title}", :controller => "recipes", :action => "recipe", :data => "#{recipe.id}"%>
-  </h3>
-  <h5>
-    <%= recipe.created_at %><br>
-  </h5>
-  <hr>
-<% end %>
+<h2><%= @recipe.title %></h2>
+<hr>
+<h2>材料</h2>
+<h3>
+  <ul>
+    <% @recipe.materials.each do |material| %>
+      <li><%= material.name %>:<%= material.amount %></li>
+    <% end %>
+  </ul>
+</h3>
+<hr>
+<h2>行程</h2>
+<h3>
+  <ol type="1">
+    <% @recipe.progresses.each do |progress| %>
+      <li><%= progress.content %></li>
+    <% end %>
+  </ol>
+</h3>
+<hr>
+<h2>メモ</h2>
+<h4><%= @recipe.memo %></h4>
+<hr>
+<a href="/recipes/:id/edit">
+  <button type="button">
+    <font size="3">レシピの編集</font>
+  </button>
+</a>
