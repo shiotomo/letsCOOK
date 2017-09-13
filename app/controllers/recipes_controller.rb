@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
     @recipe.title = params[:recipe][:title]
     @recipe.postdate = now
     @recipe.user_id = current_user.id
+    @recipe.memo = params[:recipe][:memo]
 
     respond_to do |format|
       if @recipe.save

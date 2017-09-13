@@ -13,12 +13,15 @@
 <hr>
 <h2>行程</h2>
 <h3>
-  <ul>
+  <ol type="1">
     <% @recipe.progresses.each do |progress| %>
       <li><%= progress.content %></li>
     <% end %>
-  </ul>
+  </ol>
 </h3>
+<hr>
+<h2>メモ</h2>
+<h4><%= @recipe.memo %></h4>
 <hr>
 <a href="/recipes/:id/edit">
   <button type="button">

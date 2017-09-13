@@ -16,7 +16,7 @@
   </div>
   <hr>
 
-  <label>材料</label>
+  <label>行程</label>
   <div id="progresses" class="field">
     <%= f.fields_for :progresses do |material| %>
       <%= render 'progress_fields', f: progress %>
@@ -27,7 +27,14 @@
   </div>
   <hr>
 
+  <div class="field">
+    <%= f.label :title, "メモ" %><br>
+    <%= f.text_field :memo %><br>
+  </div>
+  <hr>
+
   <div class="actions">
-    <%= f.submit "投稿" %>
+    <%= f.submit "投稿", class:"btn btn-info" %>
+    <%= link_to 'Back', recipes_path %>
   </div>
 <% end %>

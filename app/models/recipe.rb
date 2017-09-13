@@ -8,6 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  postdate   :date
+#  memo       :string
 #
 
 class Recipe < ApplicationRecord
