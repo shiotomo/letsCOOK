@@ -1,10 +1,4 @@
 <h1>レシピ投稿フォーム</h1>
 <hr>
 
-<h3>
-<%= form_for Recipe.new do |f| %>
-  <%= f.label :title, "料理名" %><br>
-  <%= f.text_field :title %><br><br>
-  <%= f.submit "投稿" %>
-<% end %>
-</h3>
+<%= render 'form' %>

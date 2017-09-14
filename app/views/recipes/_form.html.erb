@@ -1,0 +1,40 @@
+<%= form_for @recipe do |f| %>
+  <div class="field">
+    <h3><%= f.label :title, "料理名" %></h3>
+    <%= f.text_field :title %><br><br>
+  </div>
+  <hr>
+
+  <h3><label>材料</label></h3>
+  <div id="materials" class="field">
+    <%= f.fields_for :materials do |material| %>
+      <%= render 'material_fields', f: material %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= link_to_add_association "追加", f, :materials %><br>
+  </div>
+  <hr>
+
+  <h3><label>行程</label></h3>
+  <div id="progresses" class="field">
+    <%= f.fields_for :progresses do |material| %>
+      <%= render 'progress_fields', f: progress %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= link_to_add_association "追加", f, :progresses %><br>
+  </div>
+  <hr>
+
+  <div class="field">
+    <%= f.label :title, "メモ" %><br>
+    <%= f.text_field :memo %><br>
+  </div>
+  <hr>
+
+  <div class="actions">
+    <%= f.submit "投稿", class:"btn btn-info" %>
+    <%= link_to '戻る', recipes_path %>
+  </div>
+<% end %>

@@ -2,26 +2,42 @@ class RecipesController < ApplicationController
   layout 'home.html.erb'
 
   def index
+    @recipes = Recipe.where(user_id: current_user.id).reverse
   end
 
   def create
-    @recipe = Recipe.new
-    now = Time.current
+    @recipe = Recipe.new(recipe_params)
     @recipe.title = params[:recipe][:title]
-    @recipe.postdate = now
     @recipe.user_id = current_user.id
-    @recipe.save
-    redirect_to '/recipes/list'
+    @recipe.memo = params[:recipe][:memo]
+
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to @recipe, notice: 'Recipe was succesfully created.' }
+        format.json { rendor :show, status: :created, location: @recipe }
+      else
+        format.html { render :new }
+        format.json { render json: @recipe.erros, status: :unprocessable_entity }
+      end
+    end
+
+    # now = Time.current
+    # @recipe.title = params[:recipe][:title]
+    # @recipe.postdate = now
+    # @recipe.user_id = current_user.id
+    # @recipe.save
   end
 
   def new
+    @recipe = Recipe.new
   end
 
   def edit
   end
 
   def show
-    @recipes = Recipe.where(user_id: current_user.id)
+    # @recipes = Recipe.where(user_id: current_user.id).reverse
+    @recipe = Recipe.find(params[:id])
   end
 
   def update
@@ -30,36 +46,21 @@ class RecipesController < ApplicationController
   def destroy
   end
 
-  # def home
-  # end
+  def recipe
+    @recipe = Recipe.find(params[:data])
+  end
 
-  # def recipe 
-  # end
+  def menu
+  end
 
-  # def post
-  # end
+  private
+  def set_recipe
+    @recipe = Recipe.include(:materials).find(params[:id])
+    @recipe1 = Recipe.include(:materials).find(params[:id])
+    @recipe2 = Recipe.include(:progresses).find(params[:id])
+  end
 
-  # def list
-  #   @recipes = Recipe.where(user_id: current_user.id)
-  # end
-
-  # def show
-  # end
-
-  # def edit
-  #   @recipe = Recipe.all
-  # end
-
-  # def create
-  #   @recipe = Recipe.new
-  #   now = Time.current
-  #   @recipe.title = params[:recipe][:title]
-  #   @recipe.postdate = now
-  #   @recipe.user_id = current_user.id
-  #   @recipe.save
-  #   redirect_to '/recipes/list'
-  # end
-
-  # def new
-  # end
+  def recipe_params
+    params.require(:recipe).permit(:name, :description, materials_attributes: [:id, :name, :amount, :ingredients_number, :_destroy], progresses_attributes: [:id, :content, :order_number, :_destroy])
+  end
 end
