@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   layout 'home.html.erb'
+  before_action :authenticate_user!
 
   def index
     @recipes = Recipe.where(user_id: current_user.id).reverse
@@ -36,8 +37,13 @@ class RecipesController < ApplicationController
   end
 
   def show
-    # @recipes = Recipe.where(user_id: current_user.id).reverse
     @recipe = Recipe.find(params[:id])
+
+    redirect_to root_url unless @recipe.user_id == current_user.id
+
+    puts "--- debug ---"
+    p @recipe.user_id
+    p current_user.id
   end
 
   def update
