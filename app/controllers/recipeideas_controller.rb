@@ -1,6 +1,6 @@
+# recipeidea controller
 class RecipeideasController < ApplicationController
   layout 'home.html.erb'
-
 
   def index
     @recipes = Recipeidea.where(user_id: current_user.id).reverse
@@ -15,21 +15,17 @@ class RecipeideasController < ApplicationController
     redirect_to '/recipeideas/list'
   end
 
-  def new
-  end
+  def new; end
 
-  def edit
-  end
+  def edit; end
 
   def show
     @recipe = Recipeidea.find(params[:id])
   end
 
-  def update
-  end
+  def update; end
 
-  def destroy
-  end
+  def destroy; end
 
   def idea
     # @recipe = Recipeidea.find(params[:data])

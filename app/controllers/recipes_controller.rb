@@ -1,3 +1,4 @@
+# recipe controller
 class RecipesController < ApplicationController
   layout 'home.html.erb'
   before_action :authenticate_user!
@@ -21,43 +22,25 @@ class RecipesController < ApplicationController
         format.json { render json: @recipe.erros, status: :unprocessable_entity }
       end
     end
-
-    # now = Time.current
-    # @recipe.title = params[:recipe][:title]
-    # @recipe.postdate = now
-    # @recipe.user_id = current_user.id
-    # @recipe.save
   end
 
   def new
     @recipe = Recipe.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def show
     @recipe = Recipe.find(params[:id])
 
     redirect_to root_url unless @recipe.user_id == current_user.id
-
-    puts "--- debug ---"
-    p @recipe.user_id
-    p current_user.id
   end
 
-  def update
-  end
+  def update; end
 
-  def destroy
-  end
+  def destroy; end
 
-  def recipe
-    @recipe = Recipe.find(params[:data])
-  end
-
-  def menu
-  end
+  def menu; end
 
   private
   def set_recipe
