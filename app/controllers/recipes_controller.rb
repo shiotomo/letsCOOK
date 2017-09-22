@@ -28,7 +28,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
-  def edit; end
+  def edit
+    p params[:id]
+    @recipe = Recipe.find(params[:id])
+  end
 
   def show
     @recipe = Recipe.find(params[:id])
@@ -36,7 +39,22 @@ class RecipesController < ApplicationController
     redirect_to root_url unless @recipe.user_id == current_user.id
   end
 
-  def update; end
+  def update
+    @recipe = Recipe.new(recipe_params)
+    @recipe.title = params[:recipe][:title]
+    @recipe.user_id = current_user.id
+    @recipe.memo = params[:recipe][:memo]
+
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to @recipe, notice: 'Recipe was succesfully updated.' }
+        format.json { rendor :show, status: :ok, location: @recipe }
+      else
+        format.html { render :edit }
+        format.json { render json: @recipe.erros, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def destroy; end
 

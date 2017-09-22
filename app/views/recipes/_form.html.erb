@@ -18,7 +18,7 @@
 
   <h3><label>行程</label></h3>
   <div id="progresses" class="field">
-    <%= f.fields_for :progresses do |material| %>
+    <%= f.fields_for :progresses do |progress| %>
       <%= render 'progress_fields', f: progress %>
     <% end %>
   </div>

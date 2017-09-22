@@ -23,8 +23,4 @@
 <h2>メモ</h2>
 <h4><%= @recipe.memo %></h4>
 <hr>
-<a href="/recipes/:id/edit">
-  <button type="button">
-    <font size="3">レシピの編集</font>
-  </button>
-</a>
+<%= link_to 'レシピの編集', edit_recipe_path(@recipe) %>
