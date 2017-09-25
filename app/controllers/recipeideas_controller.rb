@@ -3,7 +3,7 @@ class RecipeideasController < ApplicationController
   layout 'home.html.erb'
 
   def index
-    @recipes = Recipeidea.where(user_id: current_user.id).reverse
+    @recipe = Recipeidea.where(user_id: current_user.id).reverse
   end
 
   def create
@@ -15,7 +15,9 @@ class RecipeideasController < ApplicationController
     redirect_to '/recipeideas/list'
   end
 
-  def new; end
+  def new
+    @recipe = Recipeidea.new
+  end
 
   def edit; end
 

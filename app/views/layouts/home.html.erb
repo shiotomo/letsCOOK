@@ -37,8 +37,8 @@
             <li><%= link_to 'お知らせ', '/notifications' %></li>
             <li role="presentation" class="divider"></li>
             <li><%= link_to 'プロフィール', '/' %></li>
+            <li><%= link_to 'プロフィール設定', edit_user_registration_path %></li>
             <li><%= link_to 'ヘルプ', '/helps' %></li>
-            <li><%= link_to '設定', 'settings/index' %></li>
             <li role="presentation" class="divider"></li>
             <li><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %></li>
           </ul>

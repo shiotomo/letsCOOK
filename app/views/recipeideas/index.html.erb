@@ -1,6 +1,6 @@
 <h1>アイデア一覧</h1>
 <hr>
-<% @recipes.each do |recipe| %>
+<% @recipe.each do |recipe| %>
   <h3>
     <%= link_to "#{recipe.title}", recipeidea_path(recipe) %>
   </h3>

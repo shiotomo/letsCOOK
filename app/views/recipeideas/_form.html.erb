@@ -1,0 +1,8 @@
+<%= form_for @recipe do |f| %>
+  <h3><%= f.label :title, "料理名" %></h3>
+  <%= f.text_field :title %><br><br>
+  <h3><%= f.label :content, "アイデアの内容" %></h3>
+  <%= f.text_area :content, :size => "60 x 20"%><br><br>
+  <%= f.submit "投稿", class: "btn btn-info"%>
+  <%= link_to '戻る', recipes_path %>
+<% end %>
