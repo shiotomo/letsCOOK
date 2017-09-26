@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     # passwords: 'users/passwords'
   }
 
+  devise_for :admin_users
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root to: 'welcomes#index'
 
