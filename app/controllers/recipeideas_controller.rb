@@ -12,22 +12,38 @@ class RecipeideasController < ApplicationController
     @recipe.user_id = current_user.id
     @recipe.content = params[:recipeidea][:content]
     @recipe.save
-    redirect_to '/recipeideas/list'
+    redirect_to '/recipeideas'
   end
 
   def new
     @recipe = Recipeidea.new
   end
 
-  def edit; end
+  def edit
+    @recipe = Recipeidea.find(params[:id])
+  end
 
   def show
     @recipe = Recipeidea.find(params[:id])
   end
 
-  def update; end
+  def update
+    @recipe = Recipeidea.new
 
-  def destroy; end
+    @recipe.title = params[:recipeidea][:title]
+    @recipe.user_id = current_user.id
+    @recipe.content = params[:recipeidea][:content]
+    @recipe.save
+
+    Recipeidea.find(params[:id]).destroy
+
+    redirect_to '/recipeideas'
+  end
+
+  def destroy
+    Recipeidea.find(params[:id]).destroy
+    redirect_to '/recipeideas'
+  end
 
   def idea
     # @recipe = Recipeidea.find(params[:data])
