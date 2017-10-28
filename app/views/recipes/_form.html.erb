@@ -3,6 +3,10 @@
     <h3><%= f.label :title, "料理名" %></h3>
     <%= f.text_field :title %><br><br>
   </div>
+
+  <div>
+    <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
+  </div>
   <hr>
 
   <h3><label>材料</label></h3>
