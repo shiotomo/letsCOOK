@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+
   # get 'recipes/recipe'
-  get 'recipes/menu'
 
   # get 'recipeideas/new'
   # get 'recipeideas/list'
@@ -8,12 +8,13 @@ Rails.application.routes.draw do
   # post 'recipeideas' => 'recipeideas#create'
   # post 'recipes' => 'recipes#create'
 
-  resources :notifications
   resources :recipes
-  resources :recipeideas
-  resources :welcomes
-  resources :abouts
-  resources :helps
+  resources :recipe_ideas
+  resources :welcomes, only: :index
+  resources :menus, only: :index
+  resources :notifications, only: :index
+  resources :abouts, only: :index
+  resources :helps, only: :index
   resources :settings
 
 

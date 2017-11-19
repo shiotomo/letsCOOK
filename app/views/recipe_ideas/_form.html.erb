@@ -1,0 +1,15 @@
+<%= form_for @recipe do |f| %>
+  <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
+  <div class="field">
+    <h3><%= f.label :title, "アイデア名" %></h3>
+    <%= f.text_field :title %><br><br>
+  </div>
+  <div class="field">
+    <h3><%= f.label :content, "内容" %></h3>
+    <%= f.text_area :content, size: "30 x 5" %><br><br>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "投稿", class:"btn btn-info" %>
+  </div>
+<% end %>

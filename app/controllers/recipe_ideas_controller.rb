@@ -1,16 +1,14 @@
-# recipe controller
-class RecipesController < ApplicationController
+class RecipeIdeasController < ApplicationController
   layout 'home.html.erb'
   before_action :authenticate_user!
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe_idea, only: [:show, :edit, :update, :destroy]
 
   def index
-    @recipes = Recipe.where(user_id: current_user.id).reverse
+    @recipes = RecipeIdea.where(user_id: current_user.id).reverse
   end
 
-
   def new
-    @recipe = Recipe.new
+    @recipe = RecipeIdea.new
   end
 
   def edit
@@ -21,10 +19,10 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = RecipeIdea.new(recipe_idea_params)
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was succesfully created.' }
+        format.html { redirect_to @recipe, notice: 'RecipeIdea was succesfully created.' }
         format.json { rendor :show, status: :created, location: @recipe }
       else
         format.html { render :new }
@@ -35,8 +33,8 @@ class RecipesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to @recipe, notice: 'Recipe was succesfully updated.' }
+      if @recipe.update(recipe_idea_params)
+        format.html { redirect_to @recipe, notice: 'RecipeIdea was succesfully updated.' }
         format.json { rendor :show, status: :ok, location: @recipe }
       else
         format.html { render :edit }
@@ -45,21 +43,20 @@ class RecipesController < ApplicationController
     end
   end
 
-  def destroy
+  def destory
     @recipe.destroy
     respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
+      format.html { redirect_to recipe_ideas_url, notice: 'RecipeIdea was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-
   private
-  def set_recipe
-    @recipe = Recipe.find(params[:id])
+  def set_recipe_idea
+    @recipe = RecipeIdea.find(params[:id])
   end
 
-  def recipe_params
-    params.require(:recipe).permit(:title, :user_id, :memo, :description, materials_attributes: [:id, :name, :amount, :ingredients_number, :_destroy], progresses_attributes: [:id, :content, :order_number, :_destroy])
+  def recipe_idea_params
+    params.require(:recipe_idea).permit(:title, :user_id, :content)
   end
 end

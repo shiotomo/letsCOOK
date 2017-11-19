@@ -1,0 +1,12 @@
+<h1>アイデア一覧</h1>
+
+<hr>
+<% @recipes.each do |recipe| %>
+  <h3>
+    <%= link_to "#{recipe.title}", recipe_path(recipe) %>
+  </h3>
+  <h5>
+    <%= recipe.updated_at %><br>
+  </h5>
+  <hr>
+<% end %>

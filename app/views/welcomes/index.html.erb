@@ -1,10 +1,7 @@
 <h1><%= current_user.name %></h1>
 <h3>
-  <a href="/recipes/new">
-    <button type="button" class="btn btn-default">
-      <font size="3">今日のレシピを投稿</font>
-    </button>
-  </a>
+  <%= link_to "今日のレシピを投稿", new_recipe_path, class: "btn btn-default" %>
+  <%= link_to "アイデアを投稿", new_recipe_idea_path, class: "btn btn-default" %>
 </h3>
 <hr>
 <h2>お気に入りMyレシピ</h2>
