@@ -1,15 +1,15 @@
 # == Schema Information
 #
-# Table name: recipeideas
+# Table name: favorites
 #
 #  id         :integer          not null, primary key
-#  title      :string
-#  idea       :string
+#  star       :boolean          default(FALSE)
+#  recipe_id  :integer
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  content    :text
 #
 
-class Recipeidea < ApplicationRecord
+class Favorite < ApplicationRecord
+  belongs_to :recipe
 end

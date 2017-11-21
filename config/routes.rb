@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # get 'recipes/recipe'
 
   # get 'recipeideas/new'
@@ -8,7 +7,9 @@ Rails.application.routes.draw do
   # post 'recipeideas' => 'recipeideas#create'
   # post 'recipes' => 'recipes#create'
 
-  resources :recipes
+  resources :recipes  do
+    resources :favorites, only: [:create, :destroy]
+  end
   resources :recipe_ideas
   resources :welcomes, only: :index
   resources :menus, only: :index

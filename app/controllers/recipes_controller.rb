@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @recipes = Recipe.where(user_id: current_user.id).reverse
+    @recipes = Recipe.where(user_id: current_user.id).order(updated_at: 'desc')
   end
 
 
@@ -18,6 +18,7 @@ class RecipesController < ApplicationController
 
   def show
     redirect_to root_url unless @recipe.user_id == current_user.id
+    @favorite = Favorite.where(recipe_id: params[:id])
   end
 
   def create

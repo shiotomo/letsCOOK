@@ -5,5 +5,17 @@
 </h3>
 <hr>
 <h2>お気に入りMyレシピ</h2>
+<ul>
+  <% @favorites.each do |favorite| %>
+    <% if favorite.star %>
+      <h4><li>
+          <%= link_to @recipes.find(favorite.recipe_id).title, recipe_path(favorite.recipe_id) %>
+          <%= link_to '解除',
+              recipe_favorite_path(@recipes.find(favorite.recipe_id), favorite),
+              method: :delete %>
+      </li></h4>
+    <% end %>
+  <% end %>
+</ul>
 <hr>
 <h2>自炊メーター</h2>
