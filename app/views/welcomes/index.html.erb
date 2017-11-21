@@ -9,8 +9,8 @@
   <% @favorites.each do |favorite| %>
     <% if favorite.star %>
       <h4><li>
-          <%= link_to @recipes.find(favorite.recipe_id).title, recipe_path(favorite.recipe_id) %>
-          <%= link_to '解除',
+          <%= link_to @recipes.find(favorite.recipe_id).title, recipe_path(favorite.recipe_id), class: 'btn btn-primary' %>
+          <%= link_to '[解除]',
               recipe_favorite_path(@recipes.find(favorite.recipe_id), favorite),
               method: :delete %>
       </li></h4>
