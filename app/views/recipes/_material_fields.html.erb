@@ -1,9 +1,11 @@
 <div class="nested-fields">
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %> 
+    <%= f.text_field :name, placeholder: '例) 卵' %>
+
     <%= f.label :amount %>
-    <%= f.text_field :amount %> 
+    <%= f.text_field :amount, placeholder: '例) 2個' %>
+
     <%= link_to_remove_association "削除", f %>
   </div>
 </div>

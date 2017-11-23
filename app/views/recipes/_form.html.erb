@@ -1,7 +1,7 @@
 <%= form_for @recipe do |f| %>
   <div class="field">
     <h3><%= f.label :title, "料理名" %></h3>
-    <%= f.text_field :title %><br><br>
+    <%= f.text_field :title, placeholder: '例) 卵焼き' %><br><br>
   </div>
 
   <div>
@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= f.label :title, "メモ" %><br>
-    <%= f.text_field :memo %><br>
+    <%= f.text_field :memo, placeholder: '例) 火を強くしすぎない' %><br>
   </div>
   <hr>
 
