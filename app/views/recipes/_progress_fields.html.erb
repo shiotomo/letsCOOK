@@ -3,7 +3,7 @@
     <%= f.label :content %>
   </div>
   <div class="field">
-    <%= f.text_area :content, placeholder: '例) 卵を容器に割り入れる', size: '50 x 10' %> 
-    <%= link_to_remove_association "削除", f %>
+    <%= f.text_area :content, placeholder: '例) 卵を容器に割り入れる', class: "materialize-textarea" %> 
+    <%= link_to_remove_association "削除", f, class: "btn red" %>
   </div>
 </div>

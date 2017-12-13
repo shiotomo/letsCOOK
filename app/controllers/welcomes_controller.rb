@@ -1,6 +1,5 @@
 # welcomes controller
 class WelcomesController < ApplicationController
-  layout 'home.html.erb'
   before_action :authenticate_user!, only: :index
 
   def index

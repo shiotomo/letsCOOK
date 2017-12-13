@@ -2,26 +2,26 @@
 <hr>
 <h2><%= @recipe.title %></h2>
 <hr>
-<h2>材料</h2>
-<h3>
+<h4>材料</h4>
+<p>
   <ul>
     <% @recipe.materials.each do |material| %>
       <li><%= material.name %> : <%= material.amount %></li>
     <% end %>
   </ul>
-</h3>
+</p>
 <hr>
-<h2>行程</h2>
-<h3>
+<h4>行程</h4>
+<p>
   <ol type="1">
     <% @recipe.progresses.each do |progress| %>
       <li><%= simple_format progress.content %></li>
     <% end %>
   </ol>
-</h3>
+</p>
 <hr>
-<h2>メモ</h2>
-<h4><%= @recipe.memo %></h4>
+<h4>メモ</h4>
+<p><%= @recipe.memo %></p>
 <hr>
 <%= form_for ([@recipe, @recipe.favorite.build]) do |f| %>
   <p>
@@ -34,8 +34,8 @@
       <% end %>
     <% end %>
     <% if flag == false %>
-      <%= f.submit "お気に入り" %>
+      <%= f.submit "お気に入り", class: "btn orange" %>
     <% end %>
   </p>
 <% end %>
-<%= link_to 'レシピの編集', edit_recipe_path(@recipe) %>
+<%= link_to 'レシピの編集', edit_recipe_path(@recipe), class: "btn cyan" %>

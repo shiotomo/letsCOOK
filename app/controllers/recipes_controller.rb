@@ -1,13 +1,11 @@
 # recipe controller
 class RecipesController < ApplicationController
-  layout 'home.html.erb'
   before_action :authenticate_user!
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
     @recipes = Recipe.where(user_id: current_user.id).order(updated_at: 'desc')
   end
-
 
   def new
     @recipe = Recipe.new
@@ -23,37 +21,25 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was succesfully created.' }
-        format.json { rendor :show, status: :created, location: @recipe }
-      else
-        format.html { render :new }
-        format.json { render json: @recipe.erros, status: :unprocessable_entity }
-      end
+    if @recipe.save
+      redirect_to recipes_path
+    else
+      render 'new'
     end
   end
 
   def update
-    respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to @recipe, notice: 'Recipe was succesfully updated.' }
-        format.json { rendor :show, status: :ok, location: @recipe }
-      else
-        format.html { render :edit }
-        format.json { render json: @recipe.erros, status: :unprocessable_entity }
-      end
+    if @recipe.update(recipe_params)
+      redirect_to recipes_path
+    else
+      render 'edit'
     end
   end
 
   def destroy
     @recipe.destroy
-    respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to recipes_path
   end
-
 
   private
   def set_recipe

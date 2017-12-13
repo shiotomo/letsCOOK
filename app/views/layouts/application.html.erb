@@ -10,11 +10,36 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
-      <div class="navbar-header">
-        <h1>LetsCOOK</h1>
+    <% if user_signed_in? %>
+      <nav>
+        <div class="nav-wapper">
+          <%= link_to "LetsCOOK", welcomes_path %>
+        </div>
+      </nav>
+      <%= link_to "トップページ", welcomes_path, class: "btn orange" %>
+      <%= link_to "レシピ一覧", recipes_path, class: "btn orange" %>
+      <%= link_to "アイデア一覧", recipe_ideas_path, class: "btn orange" %>
+    <% else %>
+      <nav class="nav-extended">
+        <div class="nav-wapper">
+          <%= link_to "LetsCOOK", welcomes_path %>
+        </div>
+      </nav>
+    <% end %>
+
+    <div class="row">
+      <div class="tab col s1"></div>
+      <div class="tab col s10">
+        <%= yield %>
+        <hr>
+        <%= link_to 'Back', :back, class: "btn " %>
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "btn red" %>
       </div>
-    </nav>
-    <%= yield %>
+      <div class="tab col s1"></div>
+    </div>
+
+    <script>
+      $(".button-collapse").sideNav();
+    </script>
   </body>
 </html>

@@ -6,10 +6,10 @@
   </div>
   <div class="field">
     <h3><%= f.label :content, "内容" %></h3>
-    <%= f.text_area :content, size: "30 x 5" %><br><br>
+    <%= f.text_area :content, class: "materialize-textarea" %><br><br>
   </div>
 
   <div class="actions">
-    <%= f.submit "投稿", class:"btn btn-info" %>
+    <%= f.submit "投稿", class:"btn cyan" %>
   </div>
 <% end %>

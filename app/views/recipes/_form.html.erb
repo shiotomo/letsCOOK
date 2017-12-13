@@ -7,7 +7,6 @@
   <div>
     <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
   </div>
-  <hr>
 
   <h3><label>材料</label></h3>
   <div id="materials" class="field">
@@ -16,9 +15,8 @@
     <% end %>
   </div>
   <div class="field">
-    <%= link_to_add_association "追加", f, :materials %><br>
+    <%= link_to_add_association "追加", f, :materials, class: "btn blue" %><br>
   </div>
-  <hr>
 
   <h3><label>行程</label></h3>
   <div id="progresses" class="field">
@@ -27,17 +25,16 @@
     <% end %>
   </div>
   <div class="field">
-    <%= link_to_add_association "追加", f, :progresses %><br>
+    <%= link_to_add_association "追加", f, :progresses, class: "btn blue" %><br>
   </div>
-  <hr>
 
   <div class="field">
     <%= f.label :title, "メモ" %><br>
     <%= f.text_field :memo, placeholder: '例) 火を強くしすぎない' %><br>
   </div>
-  <hr>
 
   <div class="actions">
-    <%= f.submit "投稿", class:"btn btn-info" %>
+    <%= f.submit "投稿", class: "btn cyan" %>
   </div>
 <% end %>
+<br>
