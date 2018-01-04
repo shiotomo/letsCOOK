@@ -13,5 +13,6 @@
  */
 
 @import "materialize/components/color";
+@import "materialize/components/icons-material-design";
 $primary-color: color("orange", "lighten-2") !default;
 @import 'materialize';
