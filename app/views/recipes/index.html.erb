@@ -1,13 +1,12 @@
-<h1>レシピ一覧</h1>
-
+<h2>レシピ一覧</h2>
 <hr />
 <% @recipes.each do |recipe| %>
   <div class="recipe-box">
-    <h3>
+    <h4>
       <%= link_to "#{recipe.title}", recipe_path(recipe) %>
-    </h3>
-    <h5>
+    </h4>
+    <p>
       <%= recipe.updated_at.strftime('%Y.%m.%d') %><br>
-    </h5>
+    </p>
   </div>
 <% end %>

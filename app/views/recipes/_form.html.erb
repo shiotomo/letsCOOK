@@ -1,11 +1,13 @@
 <%= form_for @recipe do |f| %>
-  <div class="field">
-    <h3><%= f.label :title, "料理名" %></h3>
-    <%= f.text_field :title, placeholder: '例) 卵焼き' %><br><br>
-  </div>
-
   <div>
     <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
+  </div>
+
+  <div class="form-box">
+    <div class="field">
+      <h3><%= f.label :title, "料理名" %></h3>
+      <%= f.text_field :title, placeholder: '例) 卵焼き' %><br><br>
+    </div>
   </div>
 
   <h3><label>材料</label></h3>
@@ -14,7 +16,7 @@
       <%= render 'material_fields', f: material %>
     <% end %>
   </div>
-  <div class="field">
+  <div class="add-button">
     <%= link_to_add_association "追加", f, :materials, class: "btn blue" %><br>
   </div>
 
@@ -24,13 +26,15 @@
       <%= render 'progress_fields', f: progress %>
     <% end %>
   </div>
-  <div class="field">
+  <div class="add-button">
     <%= link_to_add_association "追加", f, :progresses, class: "btn blue" %><br>
   </div>
 
-  <div class="field">
-    <%= f.label :title, "メモ" %><br>
-    <%= f.text_field :memo, placeholder: '例) 火を強くしすぎない' %><br>
+  <div class="form-box">
+    <div class="field">
+      <%= f.label :title, "メモ" %><br>
+      <%= f.text_field :memo, placeholder: '例) 火を強くしすぎない' %><br>
+    </div>
   </div>
 
   <div class="actions">

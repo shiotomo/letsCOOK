@@ -14,13 +14,23 @@
     <% if user_signed_in? %>
       <nav>
         <div class="nav-wapper">
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <!-- 将来的にここは画像にする -->
           <%= link_to "LetsCOOK", welcomes_path %>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><%= link_to "レシピ一覧", recipes_path %></li>
+            <li><%= link_to "アイデア一覧", recipe_ideas_path %></li>
+            <li><%= link_to "レシピ投稿", new_recipe_path, class: "btn" %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn red" %></li>
+          </ul>
+          <ul id="mobile-demo" class="side-nav">
+            <li><%= link_to "レシピ一覧", recipes_path %></li>
+            <li><%= link_to "アイデア一覧", recipe_ideas_path %></li>
+            <li><%= link_to "レシピ投稿", new_recipe_path, class: "btn" %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn red" %></li>
+          </ul>
         </div>
       </nav>
-      <%= link_to "トップページ", welcomes_path, class: "btn orange" %>
-      <%= link_to "レシピ一覧", recipes_path, class: "btn orange" %>
-      <%= link_to "アイデア一覧", recipe_ideas_path, class: "btn orange" %>
     <% else %>
       <nav class="nav-extended">
         <div class="nav-wapper">
@@ -34,8 +44,6 @@
       <div class="tab col s9">
         <%= yield %>
         <hr>
-        <%= link_to mi.backspace, :back, class: "btn blue" %>
-        <%= link_to mi.exit_to_app, destroy_user_session_path, method: :delete, class: "btn red" %>
       </div>
       <div class="tab col s1"></div>
     </div>
