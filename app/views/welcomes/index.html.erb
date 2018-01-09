@@ -4,22 +4,22 @@
   <%= link_to "アイデアを投稿", new_recipe_idea_path, class: "btn btn-default" %>
 </h3>
 <hr>
-<h2>お気に入りMyレシピ</h2>
+<h4>お気に入り</h4>
 <ul>
   <% @favorites.each do |favorite| %>
-    <% if favorite.star %>
-      <h4><li>
-          <%= link_to @recipes.find(favorite.recipe_id).title,
-            recipe_path(favorite.recipe_id), class: 'btn orange'
-          %>
-          <%= link_to '解除',
+    <div class="favorite-box">
+      <% if favorite.star %>
+        <h4><li>
+            <%= link_to @recipes.find(favorite.recipe_id).title,
+              recipe_path(favorite.recipe_id) %>
+            <%= link_to mi.delete,
               recipe_favorite_path(@recipes.find(favorite.recipe_id), favorite),
               method: :delete,
-              class: 'btn red'
-          %>
-      </li></h4>
-    <% end %>
+              class: 'btn red' %>
+        </li></h4>
+      <% end %>
+    </div>
   <% end %>
 </ul>
-<hr>
-<h2>自炊メーター</h2>
+<hr />
+<h4>自炊メーター</h4>

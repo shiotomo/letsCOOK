@@ -9,7 +9,7 @@ class FavoritesController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @favorite = @recipe.favorite.find(params[:id])
     @favorite.destroy
-    redirect_to recipe_path(@recipe)
+    redirect_to welcomes_path
   end
 
   private
