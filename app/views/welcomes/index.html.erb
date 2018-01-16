@@ -23,3 +23,5 @@
 </ul>
 <hr />
 <h4>自炊メーター</h4>
+<h5>レシピ投稿数 : <%= Recipe.where(user_id: current_user.id).count %></h5>
+<h5>アイデア投稿数 : <%= RecipeIdea.where(user_id: current_user.id).count %></h5>
