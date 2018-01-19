@@ -1,5 +1,7 @@
 <%= form_for @recipe do |f| %>
   <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
+  <%= f.hidden_field :date, value: Date.today %>
+
   <div class="field">
     <h3><%= f.label :title, "アイデア名" %></h3>
     <%= f.text_field :title %><br><br>

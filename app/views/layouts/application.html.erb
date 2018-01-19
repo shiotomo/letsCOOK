@@ -24,12 +24,14 @@
             <li><%= link_to "レシピ一覧", recipes_path %></li>
             <li><%= link_to "アイデア一覧", recipe_ideas_path %></li>
             <li><%= link_to "レシピ投稿", new_recipe_path, class: "btn" %></li>
+            <li><%= link_to "アイデア投稿", new_recipe_idea_path, class: "btn" %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn red" %></li>
           </ul>
           <ul id="mobile-demo" class="side-nav">
             <li><%= link_to "レシピ一覧", recipes_path %></li>
             <li><%= link_to "アイデア一覧", recipe_ideas_path %></li>
             <li><%= link_to "レシピ投稿", new_recipe_path, class: "btn" %></li>
+            <li><%= link_to "アイデア投稿", new_recipe_idea_path, class: "btn" %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn red" %></li>
           </ul>
         </div>
