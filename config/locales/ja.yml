@@ -1,0 +1,12 @@
+ja:
+  enums:
+    recipe:
+      status:
+        japanese_food: 和食
+        western_food: 洋食
+        italian_food: イタリアン
+        french_food: フレンチ
+        chainese_food: 中華
+        dessert: デザート
+        sweets: お菓子
+        other: その他

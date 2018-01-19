@@ -20,7 +20,7 @@ class RecipeIdeasController < ApplicationController
   def create
     @recipe = RecipeIdea.new(recipe_idea_params)
     if @recipe.save
-      redirect_to recipes_path
+      redirect_to recipe_ideas_path
     else
       render "new"
     end
@@ -28,7 +28,7 @@ class RecipeIdeasController < ApplicationController
 
   def update
     if @recipe.update(recipe_idea_params)
-      redirect_to recipes_path
+      redirect_to recipe_ideas_path
     else
       render "edit"
     end

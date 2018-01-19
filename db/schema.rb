@@ -57,9 +57,10 @@ ActiveRecord::Schema.define(version: 20171120135431) do
   end
 
   create_table "recipe_ideas", force: :cascade do |t|
-    t.string "title"
-    t.integer "user_id"
+    t.string "title", null: false
+    t.integer "user_id", null: false
     t.text "content"
+    t.date "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,6 +72,8 @@ ActiveRecord::Schema.define(version: 20171120135431) do
     t.datetime "updated_at", null: false
     t.date "postdate"
     t.string "memo"
+    t.date "date", null: false
+    t.text "category", default: "0", null: false
   end
 
   create_table "users", force: :cascade do |t|

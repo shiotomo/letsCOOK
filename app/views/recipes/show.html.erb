@@ -22,6 +22,8 @@
 <hr>
 <h4>メモ</h4>
 <p><%= @recipe.memo %></p>
+<h4>カテゴリー</h4>
+<p><%= Recipe.statuses_i18n[@recipe.category] %></p>
 <hr>
 <%= form_for ([@recipe, @recipe.favorite.build]) do |f| %>
   <p>

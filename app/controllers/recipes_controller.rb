@@ -22,15 +22,16 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      redirect_to recipes_path
+      redirect_to recipe_path(@recipe)
     else
       render 'new'
     end
   end
 
   def update
+    up
     if @recipe.update(recipe_params)
-      redirect_to recipes_path
+      redirect_to recipe_path(@recipe)
     else
       render 'edit'
     end
@@ -47,6 +48,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :user_id, :memo, :description, materials_attributes: [:id, :name, :amount, :ingredients_number, :_destroy], progresses_attributes: [:id, :content, :order_number, :_destroy])
+    params.require(:recipe).permit(:title, :user_id, :memo, :date, :category, materials_attributes: [:id, :name, :amount, :ingredients_number, :_destroy], progresses_attributes: [:id, :content, :order_number, :_destroy])
   end
 end

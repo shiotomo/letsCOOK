@@ -1,6 +1,7 @@
 <%= form_for @recipe do |f| %>
   <div>
-    <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
+    <%= f.hidden_field :user_id, value: "#{current_user.id}" %>
+    <%= f.hidden_field :date, value: Date.today %>
   </div>
 
   <div class="form-box">
@@ -37,8 +38,20 @@
     </div>
   </div>
 
+  <div class="form-box">
+    <div class="field">
+      <%= f.label :category, "カテゴリー" %><br>
+      <%= f.select :category, Recipe.statuses_i18n.keys.map {|k| [Recipe.statuses_i18n[k], k]} %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= f.submit "投稿", class: "btn cyan" %>
   </div>
 <% end %>
-<br>
+
+<script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
