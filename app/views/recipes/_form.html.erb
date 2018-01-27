@@ -4,10 +4,12 @@
     <%= f.hidden_field :date, value: Date.today %>
   </div>
 
-  <div class="form-box">
-    <div class="field">
-      <h3><%= f.label :title, "料理名" %></h3>
-      <%= f.text_field :title, placeholder: '例) 卵焼き' %><br><br>
+  <div class="card">
+    <div class="card-content">
+      <div class="field">
+        <h3><%= f.label :title, "料理名" %></h3>
+        <%= f.text_field :title, placeholder: '例) 卵焼き' %><br><br>
+      </div>
     </div>
   </div>
 
@@ -31,17 +33,21 @@
     <%= link_to_add_association "追加", f, :progresses, class: "btn blue" %><br>
   </div>
 
-  <div class="form-box">
-    <div class="field">
-      <%= f.label :title, "メモ" %><br>
-      <%= f.text_field :memo, placeholder: '例) 火を強くしすぎない' %><br>
+  <div class="card">
+    <div class="card-content">
+      <div class="field">
+        <%= f.label :title, "メモ" %><br>
+        <%= f.text_field :memo, placeholder: '例) 火を強くしすぎない' %><br>
+      </div>
     </div>
   </div>
 
-  <div class="form-box">
-    <div class="field">
-      <%= f.label :category, "カテゴリー" %><br>
-      <%= f.select :category, Recipe.statuses_i18n.keys.map {|k| [Recipe.statuses_i18n[k], k]} %>
+  <div class="card">
+    <div class="card-content">
+      <div class="field">
+        <%= f.label :category, "カテゴリー" %><br>
+        <%= f.select :category, Recipe.statuses_i18n.keys.map {|k| [Recipe.statuses_i18n[k], k]} %>
+      </div>
     </div>
   </div>
 
