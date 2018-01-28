@@ -17,25 +17,15 @@
 $primary-color: color("orange", "lighten-2") !default;
 @import 'materialize';
 
-.favorite-box {
-  border: solid 1px #bbbbbb;
-  border-radius: 0.3em;
-  margin: 5px 5px;
-  background-color: #eeeeee;
-}
-
-.form-box {
-  margin: 5px 5px;
-  background-color: #eeeeee;
-}
-
-.recipe-box {
-  border: solid 1px #bbbbbb;
-  border-radius: 0.3em;
-  margin: 5px 5px;
-  background-color: #ffffff;
-}
-
 .add-button, .delete-button {
   text-align: right;
+}
+
+nav {
+  position: fixed;
+  z-index: 999;
+}
+
+.content {
+  margin-top: 60px;
 }

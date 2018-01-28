@@ -2,13 +2,22 @@
   <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
   <%= f.hidden_field :date, value: Date.today %>
 
-  <div class="field">
-    <h3><%= f.label :title, "アイデア名" %></h3>
-    <%= f.text_field :title %><br><br>
+  <div class="card">
+    <div class="card-content">
+      <div class="field">
+        <h3><%= f.label :title, "アイデア名" %></h3>
+        <%= f.text_field :title %><br><br>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <h3><%= f.label :content, "内容" %></h3>
-    <%= f.text_area :content, class: "materialize-textarea" %><br><br>
+
+  <div class="card">
+    <div class="card-content">
+      <div class="field">
+        <h3><%= f.label :content, "内容" %></h3>
+        <%= f.text_area :content, class: "materialize-textarea" %><br><br>
+      </div>
+    </div>
   </div>
 
   <div class="actions">

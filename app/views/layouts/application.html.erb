@@ -14,39 +14,41 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <nav>
-        <div class="nav-wapper">
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <!-- 将来的にここは画像にする -->
-          <%= link_to "LetsCOOK", welcomes_path %>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><%= link_to "レシピ一覧", recipes_path %></li>
-            <li><%= link_to "アイデア一覧", recipe_ideas_path %></li>
-            <li><%= link_to "レシピ投稿", new_recipe_path, class: "btn" %></li>
-            <li><%= link_to "アイデア投稿", new_recipe_idea_path, class: "btn" %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn red" %></li>
-          </ul>
-          <ul id="mobile-demo" class="side-nav">
-            <li><%= link_to "レシピ一覧", recipes_path %></li>
-            <li><%= link_to "アイデア一覧", recipe_ideas_path %></li>
-            <li><%= link_to "レシピ投稿", new_recipe_path, class: "btn" %></li>
-            <li><%= link_to "アイデア投稿", new_recipe_idea_path, class: "btn" %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn red" %></li>
-          </ul>
-        </div>
-      </nav>
-    <% else %>
-      <nav class="nav-extended">
-        <div class="nav-wapper">
-          <%= link_to "LetsCOOK", welcomes_path %>
-        </div>
-      </nav>
-    <% end %>
+    <header>
+      <% if user_signed_in? %>
+        <nav>
+          <div class="nav-wapper">
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <!-- 将来的にここは画像にする -->
+            <%= link_to "LetsCOOK", root_path %>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><%= link_to "レシピ一覧", recipes_path %></li>
+              <li><%= link_to "アイデア一覧", recipe_ideas_path %></li>
+              <li><%= link_to "レシピ投稿", new_recipe_path, class: "btn" %></li>
+              <li><%= link_to "アイデア投稿", new_recipe_idea_path, class: "btn" %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn red" %></li>
+            </ul>
+            <ul id="mobile-demo" class="side-nav">
+              <li><%= link_to "レシピ一覧", recipes_path %></li>
+              <li><%= link_to "アイデア一覧", recipe_ideas_path %></li>
+              <li><%= link_to "レシピ投稿", new_recipe_path, class: "btn" %></li>
+              <li><%= link_to "アイデア投稿", new_recipe_idea_path, class: "btn" %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn red" %></li>
+            </ul>
+          </div>
+        </nav>
+      <% else %>
+        <nav class="nav-extended">
+          <div class="nav-wapper">
+            <%= link_to "LetsCOOK", root_path %>
+          </div>
+        </nav>
+      <% end %>
+    </header>
 
     <div class="row">
       <div class="tab col s1"></div>
-      <div class="tab col s9">
+      <div class="content tab col s10">
         <%= yield %>
       </div>
       <div class="tab col s1"></div>
