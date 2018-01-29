@@ -1,29 +1,41 @@
 <h1><%= current_user.name %></h1>
+<a href="#favorite" class="btn orange">お気に入り</a>
+<a href="#dash-board" class="btn cyan">ダッシュボード</a>
 <hr />
 <div class="card">
   <div class="card-title">
-    <h4>お気に入り</h4>
+    <h4 id="favorite">お気に入り</h4>
   </div>
   <div class="card-content">
     <ul>
       <div class="row">
-        <% @favorites.each do |favorite| %>
+        <% if @favorites == [] %>
           <div class="tab col s6">
             <div class="card">
               <div class="card-content">
-                <% if favorite.star %>
-                  <h4><li>
-                      <%= link_to @recipes.find(favorite.recipe_id).title,
-                        recipe_path(favorite.recipe_id) %>
-                      <%= link_to mi.delete,
-                        recipe_favorite_path(@recipes.find(favorite.recipe_id), favorite),
-                        method: :delete,
-                        class: 'btn red' %>
-                  </li></h4>
-                <% end %>
+                <h4>Not found</h4>
               </div>
             </div>
           </div>
+        <% else %>
+          <% @favorites.each do |favorite| %>
+            <div class="tab col s6">
+              <div class="card">
+                <div class="card-content">
+                  <% if favorite.star %>
+                    <h4><li>
+                        <%= link_to @recipes.find(favorite.recipe_id).title,
+                          recipe_path(favorite.recipe_id) %>
+                        <%= link_to mi.delete,
+                          recipe_favorite_path(@recipes.find(favorite.recipe_id), favorite),
+                          method: :delete,
+                          class: 'btn red' %>
+                    </li></h4>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </ul>
@@ -32,7 +44,7 @@
 <hr />
 <div class="card">
   <div class="card-title">
-    <h4>ダッシュボード</h4>
+    <h4 id="dash-board">ダッシュボード</h4>
   </div>
   <div class="card-content">
     <div class="card">
