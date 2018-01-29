@@ -1,8 +1,10 @@
 <h1><%= current_user.name %></h1>
 <hr />
 <div class="card">
-  <div class="card-content">
+  <div class="card-title">
     <h4>お気に入り</h4>
+  </div>
+  <div class="card-content">
     <ul>
       <div class="row">
         <% @favorites.each do |favorite| %>
@@ -28,8 +30,10 @@
   </div>
 </div>
 <hr />
-<h4>ダッシュボード</h4>
 <div class="card">
+  <div class="card-title">
+    <h4>ダッシュボード</h4>
+  </div>
   <div class="card-content">
     <div class="card">
       <div class="card-content">
