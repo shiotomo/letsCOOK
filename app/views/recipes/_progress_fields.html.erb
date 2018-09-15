@@ -1,9 +1,13 @@
 <div class="nested-fields">
-  <div>
-    <%= f.label :content %>
-  </div>
-  <div class="field">
-    <%= f.text_area :content, :size => "30 x 5" %> 
-  <%= link_to_remove_association "削除", f %>
+  <div class="card">
+    <div class="card-content">
+      <div class="field">
+        <%= f.label :content, "内容" %>
+        <%= f.text_area :content, placeholder: '例) 卵を容器に割り入れる', class: "materialize-textarea" %> 
+      </div>
+      <div class="delete-button">
+        <%= link_to_remove_association "削除", f, class: "btn red" %>
+      </div>
+    </div>
   </div>
 </div>

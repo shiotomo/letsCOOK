@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   # get 'recipes/recipe'
-  get 'recipes/menu'
 
   # get 'recipeideas/new'
   # get 'recipeideas/list'
@@ -8,12 +7,15 @@ Rails.application.routes.draw do
   # post 'recipeideas' => 'recipeideas#create'
   # post 'recipes' => 'recipes#create'
 
-  resources :notifications
-  resources :recipes
-  resources :recipeideas
-  resources :welcomes
-  resources :abouts
-  resources :helps
+  resources :recipes  do
+    resources :favorites, only: [:create, :destroy]
+  end
+  resources :recipe_ideas
+  resources :welcomes, only: :index
+  resources :menus, only: :index
+  resources :notifications, only: :index
+  resources :abouts, only: :index
+  resources :helps, only: :index
   resources :settings
 
 
@@ -24,6 +26,8 @@ Rails.application.routes.draw do
     # passwords: 'users/passwords'
   }
 
+  devise_for :admin_users
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root to: 'welcomes#index'
 

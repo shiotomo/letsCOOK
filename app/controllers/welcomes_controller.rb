@@ -1,25 +1,24 @@
+# welcomes controller
 class WelcomesController < ApplicationController
-  layout 'home.html.erb'
   before_action :authenticate_user!, only: :index
 
   def index
-  end
+    @recipes = Recipe.where(user_id: current_user.id).order(updated_at: 'desc')
+    @favorites = Favorite.where(user_id: current_user.id)
+    @chart_recipe_data = Recipe.where(user_id: current_user.id).group(:date).count
 
-  def create
-  end
+    # cateoryの分布データ構築
+    # category.each do |num|
+    #   puts num.category
+    #   puts Recipe.statuses.key(num.category)
+    # end
 
-  def new
-  end
+    status = Recipe.statuses_i18n
+    @category = Hash.new(0)
 
-  def edit
-  end
 
-  def show
-  end
-
-  def update
-  end
-
-  def destroy
+    @recipes.each do |recipe|
+      @category[status[recipe.category]] += 1
+    end
   end
 end

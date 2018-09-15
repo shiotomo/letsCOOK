@@ -1,31 +1,10 @@
+# recipe controller
 class RecipesController < ApplicationController
-  layout 'home.html.erb'
+  before_action :authenticate_user!
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @recipes = Recipe.where(user_id: current_user.id).reverse
-  end
-
-  def create
-    @recipe = Recipe.new(recipe_params)
-    @recipe.title = params[:recipe][:title]
-    @recipe.user_id = current_user.id
-    @recipe.memo = params[:recipe][:memo]
-
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was succesfully created.' }
-        format.json { rendor :show, status: :created, location: @recipe }
-      else
-        format.html { render :new }
-        format.json { render json: @recipe.erros, status: :unprocessable_entity }
-      end
-    end
-
-    # now = Time.current
-    # @recipe.title = params[:recipe][:title]
-    # @recipe.postdate = now
-    # @recipe.user_id = current_user.id
-    # @recipe.save
+    @recipes = Recipe.where(user_id: current_user.id).order(updated_at: 'desc')
   end
 
   def new
@@ -36,31 +15,39 @@ class RecipesController < ApplicationController
   end
 
   def show
-    # @recipes = Recipe.where(user_id: current_user.id).reverse
-    @recipe = Recipe.find(params[:id])
+    redirect_to root_url unless @recipe.user_id == current_user.id
+    @favorite = Favorite.where(recipe_id: params[:id])
+  end
+
+  def create
+    @recipe = Recipe.new(recipe_params)
+    if @recipe.save
+      redirect_to recipe_path(@recipe)
+    else
+      render 'new'
+    end
   end
 
   def update
+    up
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-  end
-
-  def recipe
-    @recipe = Recipe.find(params[:data])
-  end
-
-  def menu
+    @recipe.destroy
+    redirect_to recipes_path
   end
 
   private
   def set_recipe
-    @recipe = Recipe.include(:materials).find(params[:id])
-    @recipe1 = Recipe.include(:materials).find(params[:id])
-    @recipe2 = Recipe.include(:progresses).find(params[:id])
+    @recipe = Recipe.find(params[:id])
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, materials_attributes: [:id, :name, :amount, :ingredients_number, :_destroy], progresses_attributes: [:id, :content, :order_number, :_destroy])
+    params.require(:recipe).permit(:title, :user_id, :memo, :date, :category, materials_attributes: [:id, :name, :amount, :ingredients_number, :_destroy], progresses_attributes: [:id, :content, :order_number, :_destroy])
   end
 end

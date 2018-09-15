@@ -1,9 +1,17 @@
 <%= form_for @recipe do |f| %>
-  <div class="field">
-    <h3><%= f.label :title, "料理名" %></h3>
-    <%= f.text_field :title %><br><br>
+  <div>
+    <%= f.hidden_field :user_id, value: "#{current_user.id}" %>
+    <%= f.hidden_field :date, value: Date.today %>
   </div>
-  <hr>
+
+  <div class="card">
+    <div class="card-content">
+      <div class="field">
+        <h3><%= f.label :title, "料理名" %></h3>
+        <%= f.text_field :title, placeholder: '例) 卵焼き' %><br><br>
+      </div>
+    </div>
+  </div>
 
   <h3><label>材料</label></h3>
   <div id="materials" class="field">
@@ -11,30 +19,45 @@
       <%= render 'material_fields', f: material %>
     <% end %>
   </div>
-  <div class="field">
-    <%= link_to_add_association "追加", f, :materials %><br>
+  <div class="add-button">
+    <%= link_to_add_association "追加", f, :materials, class: "btn blue" %><br>
   </div>
-  <hr>
 
   <h3><label>行程</label></h3>
   <div id="progresses" class="field">
-    <%= f.fields_for :progresses do |material| %>
+    <%= f.fields_for :progresses do |progress| %>
       <%= render 'progress_fields', f: progress %>
     <% end %>
   </div>
-  <div class="field">
-    <%= link_to_add_association "追加", f, :progresses %><br>
+  <div class="add-button">
+    <%= link_to_add_association "追加", f, :progresses, class: "btn blue" %><br>
   </div>
-  <hr>
 
-  <div class="field">
-    <%= f.label :title, "メモ" %><br>
-    <%= f.text_field :memo %><br>
+  <div class="card">
+    <div class="card-content">
+      <div class="field">
+        <%= f.label :title, "メモ" %><br>
+        <%= f.text_field :memo, placeholder: '例) 火を強くしすぎない' %><br>
+      </div>
+    </div>
   </div>
-  <hr>
+
+  <div class="card">
+    <div class="card-content">
+      <div class="field">
+        <%= f.label :category, "カテゴリー" %><br>
+        <%= f.select :category, Recipe.statuses_i18n.keys.map {|k| [Recipe.statuses_i18n[k], k]} %>
+      </div>
+    </div>
+  </div>
 
   <div class="actions">
-    <%= f.submit "投稿", class:"btn btn-info" %>
-    <%= link_to '戻る', recipes_path %>
+    <%= f.submit "投稿", class: "btn cyan" %>
   </div>
 <% end %>
+
+<script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>

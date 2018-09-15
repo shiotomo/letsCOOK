@@ -1,30 +1,48 @@
-<h1>Myレシピ</h1>
-<hr>
-<h2><%= @recipe.title %></h2>
-<hr>
-<h2>材料</h2>
-<h3>
-  <ul>
-    <% @recipe.materials.each do |material| %>
-      <li><%= material.name %>:<%= material.amount %></li>
-    <% end %>
-  </ul>
-</h3>
-<hr>
-<h2>行程</h2>
-<h3>
-  <ol type="1">
-    <% @recipe.progresses.each do |progress| %>
-      <li><%= progress.content %></li>
-    <% end %>
-  </ol>
-</h3>
-<hr>
-<h2>メモ</h2>
-<h4><%= @recipe.memo %></h4>
-<hr>
-<a href="/recipes/:id/edit">
-  <button type="button">
-    <font size="3">レシピの編集</font>
-  </button>
-</a>
+<div class="card">
+  <div class="card-title">
+    <h2><%= @recipe.title %></h2>
+  </div>
+  <div class="card-content">
+    <h4>材料</h4>
+    <p>
+      <ul>
+        <% @recipe.materials.each do |material| %>
+          <li><%= material.name %> : <%= material.amount %></li>
+        <% end %>
+      </ul>
+    </p>
+    <hr />
+    <h4>行程</h4>
+    <p>
+      <ol type="1">
+        <% @recipe.progresses.each do |progress| %>
+          <li><%= simple_format progress.content %></li>
+        <% end %>
+      </ol>
+    </p>
+    <hr />
+    <h4>メモ</h4>
+    <p><%= @recipe.memo %></p>
+    <hr />
+    <h4>カテゴリー</h4>
+    <p><%= Recipe.statuses_i18n[@recipe.category] %></p>
+  </div>
+  <div class="card-action">
+    <%= link_to 'レシピの編集', edit_recipe_path(@recipe), class: "btn cyan" %>
+    <div style="display: inline-flex">
+      <%= form_for ([@recipe, @recipe.favorite.build]) do |f| %>
+        <%= f.hidden_field :star, value: true %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <% flag = false %>
+        <% @favorite.each do |fav| %>
+          <% if fav.recipe_id.to_s == params[:id] %>
+            <% flag = true %>
+          <% end %>
+        <% end %>
+        <% if flag == false %>
+          <%= f.submit "お気に入り", class: "btn orange" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

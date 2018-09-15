@@ -10,10 +10,23 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- @import "materialize/components/color";
- $primary-color: color("blue", "lighten-2") !default;
- @import 'materialize';
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import "materialize/components/color";
+@import "materialize/components/icons-material-design";
+$primary-color: color("orange", "lighten-2") !default;
+@import 'materialize';
+
+.add-button, .delete-button {
+  text-align: right;
+}
+
+nav {
+  // position: fixed;
+  // z-index: 999;
+}
+
+.content {
+  // margin-top: 60px;
+}
+

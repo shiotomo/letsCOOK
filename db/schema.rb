@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170913090043) do
+ActiveRecord::Schema.define(version: 20171120135431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["name"], name: "index_admin_users_on_name", unique: true
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.boolean "star", default: false
+    t.integer "recipe_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "materials", force: :cascade do |t|
     t.string "name"
@@ -32,13 +56,13 @@ ActiveRecord::Schema.define(version: 20170913090043) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipeideas", force: :cascade do |t|
-    t.string "title"
-    t.string "idea"
-    t.integer "user_id"
+  create_table "recipe_ideas", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "user_id", null: false
+    t.text "content"
+    t.date "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "content"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -48,6 +72,8 @@ ActiveRecord::Schema.define(version: 20170913090043) do
     t.datetime "updated_at", null: false
     t.date "postdate"
     t.string "memo"
+    t.date "date", null: false
+    t.text "category", default: "0", null: false
   end
 
   create_table "users", force: :cascade do |t|

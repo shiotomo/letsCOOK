@@ -1,12 +1,69 @@
 <h1><%= current_user.name %></h1>
-<h3>
-  <a href="/recipes/new">
-    <button type="button" class="btn btn-default">
-      <font size="3">今日のレシピを投稿</font>
-    </button>
-  </a>
-</h3>
-<hr>
-<h2>お気に入りMyレシピ</h2>
-<hr>
-<h2>自炊メーター</h2>
+<a href="#favorite" class="btn orange">お気に入り</a>
+<a href="#dash-board" class="btn cyan">ダッシュボード</a>
+<hr />
+<div class="card">
+  <div class="card-title">
+    <h4 id="favorite">お気に入り</h4>
+  </div>
+  <div class="card-content">
+    <ul>
+      <div class="row">
+        <% if @favorites == [] %>
+          <div class="tab col s6">
+            <div class="card">
+              <div class="card-content">
+                <h4>Not found</h4>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <% @favorites.each do |favorite| %>
+            <div class="tab col s6">
+              <div class="card">
+                <div class="card-content">
+                  <% if favorite.star %>
+                    <h4><li>
+                        <%= link_to @recipes.find(favorite.recipe_id).title,
+                          recipe_path(favorite.recipe_id) %>
+                        <%= link_to mi.delete,
+                          recipe_favorite_path(@recipes.find(favorite.recipe_id), favorite),
+                          method: :delete,
+                          class: 'btn red' %>
+                    </li></h4>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </ul>
+  </div>
+</div>
+<hr />
+<div class="card">
+  <div class="card-title">
+    <h4 id="dash-board">ダッシュボード</h4>
+  </div>
+  <div class="card-content">
+    <div class="card">
+      <div class="card-content">
+        <h5>レシピ投稿数 : <%= Recipe.where(user_id: current_user.id).count %></h5>
+        <h5>アイデア投稿数 : <%= RecipeIdea.where(user_id: current_user.id).count %></h5>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <label>進捗グラフ</label>
+        <%= line_chart @chart_recipe_data %>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <label>カテゴリーグラフ</label>
+        <%= pie_chart @category %>
+      </div>
+    </div>
+  </div>
+</div>
